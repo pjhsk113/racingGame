@@ -9,7 +9,7 @@ public class RacingGame {
         Cars cars = Cars.from(InputView.inputCarName());
 
         // 라운드 입력
-        Round round = Round.of(InputView.inputRound());
+        Round round = Round.from(InputView.inputRound());
         // 라운드 별 결과
         round.roundResult(cars);
 
