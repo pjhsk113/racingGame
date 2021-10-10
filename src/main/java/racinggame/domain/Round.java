@@ -9,7 +9,7 @@ public class Round {
         this.round = round;
     }
 
-    public static Round of(int round) {
+    public static Round from(int round) {
         return new Round(round);
     }
 
