@@ -6,7 +6,7 @@ import racinggame.view.OutputView;
 public class RacingGame {
     public void play() {
         // 자동차 이름 입력
-        Cars cars = Cars.of(InputView.inputName());
+        Cars cars = Cars.of(InputView.inputCarName());
 
         // 라운드 입력
         Round round = Round.of(InputView.inputRound());
