@@ -1,8 +1,12 @@
 package racinggame.view;
 
 import newtstep.utils.Console;
+import racinggame.domain.Car;
+import racinggame.domain.Cars;
+import racinggame.validate.RacingGameValidator;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class InputView {
@@ -12,14 +16,26 @@ public class InputView {
 
     private InputView() { }
 
-    public static List<String> inputName() {
-        System.out.println(INPUT_NAME_MESSAGE);
-        return convertList(Console.readLine());
+    public static List<Car> inputCarName() {
+        try {
+            System.out.println(INPUT_NAME_MESSAGE);
+            return Cars.createCars(convertList(Console.readLine()));
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return inputCarName();
+        }
     }
 
     public static int inputRound() {
-        System.out.println(INPUT_ROUND_MESSAGE);
-        return Integer.parseInt(Console.readLine());
+        try {
+            System.out.println(INPUT_ROUND_MESSAGE);
+            String input = Console.readLine();
+            RacingGameValidator.validateRoundInput(input);
+            return Integer.parseInt(input);
+        } catch (InputMismatchException | NumberFormatException e) {
+            e.printStackTrace();
+            return inputRound();
+        }
     }
 
     private static List<String> convertList(String inputName) {
