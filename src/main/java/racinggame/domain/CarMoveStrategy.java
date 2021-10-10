@@ -8,6 +8,6 @@ public class CarMoveStrategy implements MoveStrategy {
     @Override
     public boolean moveAble() {
         int randomNumber = Randoms.pickNumberInRange(GameRules.START_INCLUSIVE.getValue(), GameRules.END_INCLUSIVE.getValue());
-        return randomNumber >= GameRules.MOVEABLE.getValue();
+        return randomNumber >= GameRules.STANDARD_NUMBER.getValue();
     }
 }
