@@ -2,6 +2,8 @@ package racinggame.validate;
 
 import racinggame.domain.Car;
 
+import java.util.NoSuchElementException;
+
 public class RacingGameValidator {
     private static final String NAME_LENGTH_EXCEPTION_MESSAGE = "[ERROR] 이름은 5자 이하만 입력 가능합니다.";
     private static final String BLANK_CANNOT_ENTERED_NAME = "[ERROR] 이름에 공백은 입력할 수 없습니다.";
@@ -31,13 +33,13 @@ public class RacingGameValidator {
 
     private static void validateNameLength(String name) {
         if (name.length() > 5) {
-            throw new IllegalArgumentException(NAME_LENGTH_EXCEPTION_MESSAGE);
+            throw new NoSuchElementException(NAME_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
     private static void validateInputBlank(String name) {
         if (name.trim().isEmpty()) {
-            throw new IllegalArgumentException(BLANK_CANNOT_ENTERED_NAME);
+            throw new NoSuchElementException(BLANK_CANNOT_ENTERED_NAME);
         }
     }
 }
