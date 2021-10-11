@@ -26,7 +26,7 @@ class CarsTest {
     @MethodSource("generateDuplicateCarName")
     void carNameDuplicateTest(List<String> carNames) {
         assertThatThrownBy(() -> {
-            Cars.from(carNames);
+            Cars.from(Cars.createCars(carNames));
         }).isInstanceOf(IllegalArgumentException.class);
 
     }

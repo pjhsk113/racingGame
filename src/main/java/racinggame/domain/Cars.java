@@ -12,8 +12,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars from(List<String> carNames) {
-        return new Cars(createCars(carNames));
+    public static Cars from(List<Car> carNames) {
+        return new Cars(carNames);
     }
 
     public void moveCars() {
