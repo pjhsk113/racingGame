@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class OutputView {
-    private static final String COLON = ":";
+    private static final String COLON = " : ";
     private static final String HYPHEN = "-";
     private static final String COMMA = ",";
     private static final String WINNER_IS = "최종 우승자는 %s 입니다.";
