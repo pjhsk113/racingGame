@@ -1,6 +1,8 @@
 package racinggame.view;
 
 import newtstep.utils.Console;
+import racinggame.domain.Car;
+import racinggame.domain.Cars;
 import racinggame.validate.RacingGameValidator;
 
 import java.util.ArrayList;
@@ -14,14 +16,14 @@ public class InputView {
 
     private InputView() { }
 
-    public static List<String> inputCarName() {
+    public static List<Car> inputCarName() {
+        System.out.println(INPUT_NAME_MESSAGE);
         try {
-            System.out.println(INPUT_NAME_MESSAGE);
-            return convertList(Console.readLine());
-        } catch (NoSuchElementException e) {
+            return Cars.createCars(convertList(Console.readLine()));
+        } catch (IllegalArgumentException | NoSuchElementException e) {
             System.out.println(e.getMessage());
             System.out.println(INPUT_NAME_MESSAGE);
-            return convertList(Console.readLine());
+            return Cars.createCars(convertList(Console.readLine()));
         }
     }
 
@@ -32,7 +34,7 @@ public class InputView {
             RacingGameValidator.validateRoundInput(input);
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return inputRound();
         }
     }
@@ -40,7 +42,6 @@ public class InputView {
     private static List<String> convertList(String inputName) {
         List<String> names = new ArrayList<>();
         for (String name : inputName.split(COMMA)) {
-            RacingGameValidator.carNameValidator(name);
             names.add(name.trim());
         }
         return names;
