@@ -19,7 +19,7 @@ public class InputView {
             System.out.println(INPUT_NAME_MESSAGE);
             return convertList(Console.readLine());
         } catch (NoSuchElementException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             System.out.println(INPUT_NAME_MESSAGE);
             return convertList(Console.readLine());
         }
