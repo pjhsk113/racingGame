@@ -26,14 +26,14 @@ class CarsTest {
     @MethodSource("generateDuplicateCarName")
     void carNameDuplicateTest(List<String> carNames) {
         assertThatThrownBy(() -> {
-            Cars.from(Cars.createCars(carNames));
+            Cars.from(carNames);
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
 
     private static Stream<Arguments> generateDuplicateCarName() {
         return Stream.of(
-                Arguments.of(Arrays.asList("abbb, abbb")),
+                Arguments.of(Arrays.asList("abbb", "abbb")),
                 Arguments.of(Arrays.asList("차1","차1")),
                 Arguments.of(Arrays.asList("차1","차1","차1")),
                 Arguments.of(Arrays.asList("차1","차2","차2","차4"))

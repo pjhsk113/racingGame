@@ -6,6 +6,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -34,7 +36,7 @@ class CarTest {
     void carNameLengthTest(String inputName) {
         assertThatThrownBy(() -> {
             Car.from(inputName);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(NoSuchElementException.class);
     }
 
     @DisplayName("자동차 이름에 빈 값이 입력되면 IllegalArgumentException이 발생한다.")
@@ -43,6 +45,6 @@ class CarTest {
     void carNameBlankTest(String inputName) {
         assertThatThrownBy(() -> {
             Car.from(inputName);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(NoSuchElementException.class);
     }
 }
